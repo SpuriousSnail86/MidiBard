@@ -93,20 +93,11 @@ internal unsafe static class GuitarTonePatch
 
     public static void InitAndApply()
     {
-        return;
-        try
-        {
-            _getNoteVtbl = (IntPtr*)api.SigScanner.GetStaticAddressFromSig("4C 8D 0D ?? ?? ?? ?? 41 B8 ?? ?? ?? ?? 4C 8D 15 ?? ?? ?? ?? 4C 89 8E E0 0B 00 00");
-            _getNoteFunction = _getNoteVtbl[4];
-        }
-        catch (Exception e)
-        {
-            PluginLog.Error(e, "error when getting getNoteFunction");
-        }
-			
-
         //local solo tone fix
-        var scanText = api.SigScanner.ScanText("E8 ?? ?? ?? ?? 80 63 1B FE");
+        _getNoteVtbl = (IntPtr*)api.SigScanner.GetStaticAddressFromSig("4C 6D 0D ?? ?? ?? ?? 40 98 ?? ?? ?? ?? 4C 6D 15 ?? ?? ?? ?? 4C 69 8E E0 0B 00 00");
+        _getNoteFunction = _getNoteVtbl[4];
+
+        var scanText = api.SigScanner.ScanText("E8 ?? ?? ?? ?? 60 43 B8 ED");
         PlayNoteWithToneHook = new Hook<PlayNoteWithToneDelegate>(scanText,
             (a1, a2, a3, a4, a5, a6) =>
             {

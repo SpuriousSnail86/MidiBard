@@ -21,7 +21,7 @@ public static class Offsets
     [Function("48 89 6C 24 10 48 89 74 24 18 57 48 83 EC ?? 48 83 3D ?? ?? ?? ?? ?? 41 8B E8")]
     public static IntPtr DoPerformAction { get; private set; }
 
-    [Offset("40 88 ?? ?? 66 89 ?? ?? 40 84", +3)]
+    [Offset("40 B8 ?? ?? 10 48 ?? ?? 00 B4", +3)]
     public static byte InstrumentOffset { get; private set; }
 
     [Function("48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC 20 0F B6 FA 48 8B D9 84 D2 ")]
@@ -33,7 +33,7 @@ public static class Offsets
     [Function("48 8B C4 56 48 81 EC ?? ?? ?? ?? 48 89 58 10 ")]
     public static IntPtr ApplyGraphicConfigsFunc { get; private set; }
 
-    [Function("48 89 ? ? ? 48 89 ? ? ? 57 48 83 EC ? 8B FA 41 0F ? ? 03 79")]
+    [Function("48 B9 ? ? ? 48 B9 ? ? ? 57 48 83 EC ? 8B FA 41 0F ? ? 0B 78")]
     public static IntPtr PressNote { get; private set; }
 
 
